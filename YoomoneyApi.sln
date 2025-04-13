@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YoomoneyApi", "YoomoneyApi\YoomoneyApi.csproj", "{FCD1088F-D9E6-44DE-8FE9-228E01446D4E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FCD1088F-D9E6-44DE-8FE9-228E01446D4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCD1088F-D9E6-44DE-8FE9-228E01446D4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCD1088F-D9E6-44DE-8FE9-228E01446D4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCD1088F-D9E6-44DE-8FE9-228E01446D4E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

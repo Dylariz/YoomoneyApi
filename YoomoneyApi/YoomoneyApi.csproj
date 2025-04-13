@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <Title>YoomoneyApi</Title>
+        <Authors>Dylariz arabaleevdennis</Authors>
+        <Description>This library is (unofficial C# library) and intended to provide one of the possible options for working with a personal Yoomoney account and a payment method. Forked from willdiealone/yoomoney-api</Description>
+        <PackageLicenseUrl>https://github.com/Dylariz/YoomoneyApi/blob/main/LICENSE.txt</PackageLicenseUrl>
+        <PackageIcon>icon.jpg</PackageIcon>
+        <RepositoryUrl>https://github.com/Dylariz/YoomoneyApi</RepositoryUrl>
+        <RepositoryType>github.com</RepositoryType>
+        <Company>Dylariz</Company>
+        <NeutralLanguage>ru</NeutralLanguage>
+        <PackageProjectUrl>https://github.com/Dylariz/YoomoneyApi/blob/main/README.md</PackageProjectUrl>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="..\icon.jpg">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
+        <Link>icon.jpg</Link>
+      </None>
+    </ItemGroup>
+
+</Project>
