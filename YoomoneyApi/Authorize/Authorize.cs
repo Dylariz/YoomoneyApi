@@ -11,19 +11,23 @@ public class Authorize
     public Authorize(string clientId, string redirectUri, string[] scope)
     {
         // Формируем URL-адрес для запроса авторизации
-        AuthorizeUrl = GetAuthorizeUrl(clientId, redirectUri, scope);
+        AuthorizeUrl = $"https://yoomoney.ru/oauth/authorize?client_id={clientId}&response_type=code" +
+                       $"&redirect_uri={redirectUri}&scope={string.Join(" ", scope).Replace(" ", "%20")}";
+        
         // Выводим сообщение для пользователя с URL-адресом авторизации
         WriteLine("\nVisit this website and confirm the application authorization request:");
         WriteLine($"{AuthorizeUrl}");
     }
-
-    public string GetAuthorizeUrl(string clientId, string redirectUri, string[] scope)
-    {
-        AuthorizeUrl = $"https://yoomoney.ru/oauth/authorize?client_id={clientId}&response_type=code" +
-                       $"&redirect_uri={redirectUri}&scope={string.Join(" ", scope).Replace(" ", "%20")}";
-        return AuthorizeUrl;
-    }
     
+    /// <summary>
+    /// Метод для получения токена доступа
+    /// </summary>
+    /// <param name="code"></param>
+    /// <param name="clientId"></param>
+    /// <param name="redirectUri"></param>
+    /// <param name="clientSecret"></param>
+    /// <returns></returns>
+    /// <exception cref="AppException"></exception>
     public async Task<string?> GetAccessToken(string? code,string clientId,string redirectUri, string? clientSecret = null)
     {
         // Проверяем, что введенный код не является пустым и содержит "code="

@@ -57,7 +57,6 @@ public class Account
     /// </summary>
     /// <param name="baseUri"></param>
     /// <param name="token"></param>
-    /// <param name="method"></param>
     public Account(string baseUri, string token)
     {
         try
@@ -91,7 +90,7 @@ public class Account
 
                 if (data.cards_linked is not null && data.cards_linked.Any())
                 {
-                    CardsLinked.Select(card => new Card(
+                    var enumerable = CardsLinked.Select(card => new Card(
                         panFragment: card.PanFragment,
                         type: card.Type));
                 }
@@ -102,7 +101,6 @@ public class Account
         catch (AppException e)
         {
             WriteLine(e);
-
         }
     }  
 

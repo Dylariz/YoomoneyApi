@@ -29,9 +29,9 @@ public class Client
     /// Получение информации о состоянии счета пользователя.
     /// </summary>
     /// <returns></returns>
-    public Account GetAccountInfo(string token)
+    public Account GetAccountInfo()
     {
-        return new Account(_baseUri, token);
+        return new Account(_baseUri, _token);
     }
 
     /// <summary>
@@ -47,7 +47,6 @@ public class Client
     /// <param name="details"></param>
     /// <returns></returns>
     public History.History GetOperationHistory(
-        string token,
         string? type = null,
         string? label = null,
         DateTime? fromDate = null,
@@ -57,7 +56,7 @@ public class Client
         bool details = false)
     {
         return new History.History(_baseUri,
-            token, type, label, fromDate, tillDate, startRecord, records, details);
+            _token, type, label, fromDate, tillDate, startRecord, records, details);
     }
 
     /// <summary>
