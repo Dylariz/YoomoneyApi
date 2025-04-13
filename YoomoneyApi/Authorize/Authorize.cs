@@ -23,8 +23,8 @@ public class Authorize
                        $"&redirect_uri={redirectUri}&scope={string.Join(" ", scope).Replace(" ", "%20")}";
         return AuthorizeUrl;
     }
-
-    public async Task<string?> GetAccessToken(string? code,string clientId,string redirectUri)
+    
+    public async Task<string?> GetAccessToken(string? code,string clientId,string redirectUri, string? clientSecret = null)
     {
         // Проверяем, что введенный код не является пустым и содержит "code="
         if (!string.IsNullOrEmpty(code))
@@ -39,27 +39,27 @@ public class Authorize
         
         // Формируем URL-адрес для запроса токена
         var tokenUrl = $"https://yoomoney.ru/oauth/token?code={code}&client_id={clientId}" +
-                       $"&grant_type=authorization_code&redirect_uri={redirectUri}";
-        using (HttpClient httpClient = new())
+                       $"&grant_type=authorization_code&redirect_uri={redirectUri}" + (clientSecret != null ? $"&client_secret={clientSecret}" : "");
+        
+        using HttpClient httpClient = new();
+        // Выполняем асинхронный POST-запрос к указанному URL (tokenUrl) без тела запроса
+        var response = await httpClient.PostAsync(tokenUrl, null);
+        // Проверяем, что ответ от сервера имеет успешный статус (HTTP 200 OK)
+        if (response.IsSuccessStatusCode)
         {
-            // Выполняем асинхронный POST-запрос к указанному URL (tokenUrl) без тела запроса
-            var response = await httpClient.PostAsync(tokenUrl, null);
-            // Проверяем, что ответ от сервера имеет успешный статус (HTTP 200 OK)
-            if (response.IsSuccessStatusCode)
+            // Считываем содержимое ответа в виде строки
+            var content = await response.Content.ReadAsStringAsync();
+            // Пытаемся десериализовать JSON-строку в словарь (Dictionary) с ключами и значениями строк
+            var json = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, string>>(content);
+            // Проверяем, что json не является пустым и содержит ключ "access_token"
+            if (json is not null && json.TryGetValue("access_token", out var accessToken))
             {
-                // Считываем содержимое ответа в виде строки
-                var content = await response.Content.ReadAsStringAsync();
-                // Пытаемся десериализовать JSON-строку в словарь (Dictionary) с ключами и значениями строк
-                var json = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, string>>(content);
-                // Проверяем, что json не является пустым и содержит ключ "access_token"
-                if (json is not null && json.TryGetValue("access_token", out var accessToken))
-                {
-                    // Если ключ "access_token" найден, возвращаем значение токена доступа
-                    TokenUrl = accessToken;
-                    return TokenUrl;
-                }
-            }   
+                // Если ключ "access_token" найден, возвращаем значение токена доступа
+                TokenUrl = accessToken;
+                return TokenUrl;
+            }
         }
+
         // Если что-то пошло не так, возвращаем null
         return null;
     }
