@@ -1,10 +1,10 @@
 # API Yoomoney - Unofficial C# Library
-![Logo](https://imgur.com/4tWrKD2.png)
+![Logo](https://github.com/Dylariz/YoomoneyApi/blob/main/icon.jpg?raw=true)
 
 [![YouTube video about yoomoney-api]( https://img.shields.io/badge/watch%20on-YouTube-blue?logo=youtube&style=for-the-badge)](https://youtu.be/c9gv_IWgV4Y)
-[![Nuget version](https://img.shields.io/nuget/v/yoomoney-api?style=for-the-badge)](https://www.nuget.org/packages/yoomoney-api)
-[![Dotnet](https://img.shields.io/badge/platform-.NET-blue?style=for-the-badge)](https://www.nuget.org/packages/yoomoney-api)
-[![Nuget download](https://img.shields.io/nuget/dt/yoomoney-api?style=for-the-badge)](https://www.nuget.org/packages/yoomoney-api)
+[![Nuget version](https://img.shields.io/nuget/v/YoomoneyApi?style=for-the-badge)](https://www.nuget.org/packages/YoomoneyApi)
+[![Dotnet](https://img.shields.io/badge/platform-.NET-blue?style=for-the-badge)](https://www.nuget.org/packages/YoomoneyApi)
+[![Nuget download](https://img.shields.io/nuget/dt/YoomoneyApi?style=for-the-badge)](https://www.nuget.org/packages/YoomoneyApi)
 
 ## Summary
 - [Introduction](#introduction)
@@ -36,7 +36,7 @@ Implemented methods:
 You can install it with .Net CLI command:
 
 ```csharp
-dotnet add package yoomoney-api --version 1.4.0
+dotnet add package YoomoneyApi --version 1.0.3
 ```
 
 # Quick start
@@ -55,7 +55,7 @@ Authorization proceeds as follows:
 
 1. Paste this code and run it
 ```csharp
-using yoomoney_api.authorize;
+using YoomoneyApi.Authorize;
 
 Authorize authorize = new(clientId:"YOUR_CLIENT_ID",redirectUl:"YOUR_REDIRECT_URL",scope:new []
 {
@@ -97,8 +97,8 @@ You can copy the received token or get it from the Token Url property of the Aut
 Paste YOUR_TOKEN and run this code:
 
 ```csharp
-using yoomoney_api.account;
-using yoomoney_api.authorize;
+using YoomoneyApi.Account;
+using YoomoneyApi.Authorize;
 
 var client = new Client(token:authorize.TokenUrl);
 var accountInfo = client.GetAccountInfo(token:YOUR_TOKEN);
