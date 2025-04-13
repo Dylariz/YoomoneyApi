@@ -59,8 +59,21 @@ public class Authorize
                 return TokenUrl;
             }
         }
-
-        // Если что-то пошло не так, возвращаем null
+        else
+        {
+            // Если ответ не успешный, проверяем наличие ошибки в содержимом ответа
+            var errorContent = await response.Content.ReadAsStringAsync();
+            if (!string.IsNullOrEmpty(errorContent))
+            {
+                // Пытаемся десериализовать JSON-строку с ошибкой
+                var errorJson = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, string>>(errorContent);
+                if (errorJson is not null && errorJson.TryGetValue("error", out var errorMessage))
+                {
+                    // Если ошибка найдена, выбрасываем исключение с сообщением об ошибке
+                    throw new AppException(message: errorMessage);
+                }
+            }
+        }
         return null;
     }
 }
