@@ -4,28 +4,40 @@
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <Title>YoomoneyApi</Title>
-        <Authors>Dylariz arabaleevdennis</Authors>
-        <Description>This library is (unofficial C# library) and intended to provide one of the possible options for working with a personal Yoomoney account and a payment method. Forked from willdiealone/yoomoney-api</Description>
-        <PackageLicenseUrl>https://github.com/Dylariz/YoomoneyApi/blob/main/LICENSE.txt</PackageLicenseUrl>
-        <PackageIcon>icon.jpg</PackageIcon>
-        <RepositoryUrl>https://github.com/Dylariz/YoomoneyApi</RepositoryUrl>
-        <RepositoryType>github.com</RepositoryType>
-        <Company>Dylariz</Company>
         <NeutralLanguage>ru</NeutralLanguage>
-        <PackageProjectUrl>https://github.com/Dylariz/YoomoneyApi/blob/main/README.md</PackageProjectUrl>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageIcon>icon.jpg</PackageIcon>
+		<Title>YoomoneyApi</Title>
+		<Authors>Dylariz willdiealone</Authors>
+		<Description>This library is (unofficial C# library) and intended to provide one of the possible options for working with a personal Yoomoney account and a payment method. Forked from willdiealone/yoomoney-api</Description>
+		<PackageProjectUrl>https://github.com/Dylariz/YoomoneyApi/blob/main/README.md</PackageProjectUrl>
+		<PackageLicenseUrl></PackageLicenseUrl>
+		<RepositoryUrl>https://github.com/Dylariz/YoomoneyApi</RepositoryUrl>
+		<RepositoryType>github.com</RepositoryType>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<Version>1.0.3</Version>
     </PropertyGroup>
 
     <ItemGroup>
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     </ItemGroup>
-
-    <ItemGroup>
-      <None Include="..\icon.jpg">
-        <Pack>True</Pack>
-        <PackagePath></PackagePath>
-        <Link>icon.jpg</Link>
-      </None>
-    </ItemGroup>
-
+	
+	<ItemGroup>
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All"/>
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <None Include="..\icon.jpg">
+	    <Pack>True</Pack>
+	    <PackagePath></PackagePath>
+	    <Link>icon.jpg</Link>
+	  </None>
+	  <None Include="..\README.md">
+	    <Pack>True</Pack>
+	    <PackagePath></PackagePath>
+	    <Link>README.md</Link>
+	  </None>
+	</ItemGroup>
 </Project>
